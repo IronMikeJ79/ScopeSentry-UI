@@ -89,13 +89,13 @@ export function getBoundingClientRect(element: Element): DOMRect | number {
 }
 
 /**
- * 获取当前元素的left、top偏移
- *   left：元素最左侧距离文档左侧的距离
- *   top:元素最顶端距离文档顶端的距离
- *   right:元素最右侧距离文档右侧的距离
- *   bottom：元素最底端距离文档底端的距离
- *   rightIncludeBody：元素最左侧距离文档右侧的距离
- *   bottomIncludeBody：元素最底端距离文档最底部的距离
+ * Get the left/top offsets of the current element
+ *   left: distance from the element's left edge to the left edge of the document
+ *   top: distance from the element's top edge to the top edge of the document
+ *   right: distance from the element's right edge to the right edge of the document
+ *   bottom: distance from the element's bottom edge to the bottom edge of the document
+ *   rightIncludeBody: distance from the element's left edge to the right edge of the document
+ *   bottomIncludeBody: distance from the element's bottom edge to the bottom of the document
  *
  * @description:
  */

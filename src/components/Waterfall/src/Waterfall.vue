@@ -4,6 +4,9 @@ import { useDesign } from '@/hooks/web/useDesign'
 import { ref, nextTick, unref, onMounted, watch } from 'vue'
 import { useEventListener, useIntersectionObserver } from '@vueuse/core'
 import { debounce } from 'lodash-es'
+import { useI18n } from '@/hooks/web/useI18n'
+
+const { t } = useI18n()
 
 const { getPrefixCls } = useDesign()
 
@@ -21,10 +24,10 @@ const prop = defineProps({
     height: 'height'
   }),
   cols: propTypes.number.def(undefined),
-  loadingText: propTypes.string.def('加载中...'),
+  loadingText: propTypes.string.def(t('common.loading')),
   loading: propTypes.bool.def(false),
   end: propTypes.bool.def(false),
-  endText: propTypes.string.def('没有更多了'),
+  endText: propTypes.string.def(t('common.noMore')),
   autoCenter: propTypes.bool.def(true),
   layout: propTypes.oneOf(['javascript', 'flex']).def('flex')
 })
@@ -39,7 +42,7 @@ const wrapWidth = ref(0)
 
 const loadMore = ref<HTMLDivElement>()
 
-// 首先确定列数 = 页面宽度 / 图片宽度
+// Column count first: container width / image width
 const innerCols = ref(0)
 
 const filterData = ref<any[]>([])
@@ -64,11 +67,11 @@ const filterWaterfall = async () => {
         left: i * (width + gap)
       })
     } else {
-      // 其他行，先找出最矮的那一列 和 索引
-      // 假设最小高度是第一个元素
+      // Other rows: find the shortest column and its index
+      // Start by assuming the first element is the shortest
       let minHeight = heights.value[0]
       let index = 0
-      // 找出最小高度
+      // Find the actual minimum height
       for (let j = 1; j < unref(innerCols); j++) {
         if (unref(heights)[j] < minHeight) {
           minHeight = unref(heights)[j]
@@ -76,7 +79,7 @@ const filterWaterfall = async () => {
         }
       }
 
-      // 更新最矮高度
+      // Update the height of the shortest column
       heights.value[index] += data[i][props.height as string] + gap
       filterData.value.push({
         ...data[i],
@@ -99,9 +102,9 @@ const flexWaterfall = async () => {
   innerCols.value = prop.cols ?? Math.floor(container.clientWidth / (width + gap))
 
   const length = data.length
-  // 根据列数，创建数组
+  // Build an array with one entry per column
   const arr = new Array(unref(innerCols)).fill([])
-  // 循环data，依次插入到arr中
+  // Walk data and drop each item into its column in turn
   for (let i = 0; i < length; i++) {
     const index = i % unref(innerCols)
     arr[index] = [...arr[index], data[i]]

@@ -7,15 +7,18 @@ import { ElInput, ElPopover, ElScrollbar, ElTabs, ElTabPane, ElPagination } from
 import { useAppStore } from '@/store/modules/app'
 import { computed, CSSProperties, ref, unref, watch } from 'vue'
 import { nextTick } from 'vue'
+import { useI18n } from '@/hooks/web/useI18n'
+
+const { t } = useI18n()
 
 const init = async (icon?: string) => {
   if (!icon) return
   const iconInfo = icon.split(':')
   iconName.value = iconInfo[0]
   const wrapIndex = icons.findIndex((item) => item.prefix === iconInfo[0])
-  // 查询当前icon的索引
+  // Find the index of the current icon
   const index = filterItemIcons(icons[wrapIndex].icons).findIndex((item) => item === icon)
-  // 计算当前icon的页码
+  // Calculate the page number of the current icon
   await nextTick()
   currentPage.value = Math.ceil((index + 1) / unref(pageSize))
 }
@@ -124,7 +127,7 @@ const inputClear = () => {
           v-model="search"
           class="mb-20px"
           clearable
-          placeholder="搜索图标"
+          :placeholder="t('common.searchIcon')"
           @clear="inputClear"
         />
         <ElTabs tab-position="left" v-model="iconName" @tab-change="tabChange">

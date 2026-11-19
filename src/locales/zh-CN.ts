@@ -1,6 +1,10 @@
 export default {
   common: {
     clearAll: '清空',
+    loading: '加载中...',
+    noMore: '没有更多了',
+    searchIcon: '搜索图标',
+    preview: '预览',
     selectCategory: '分类选择',
     about: '关于',
     unprocessed: '未处理',
@@ -28,6 +32,8 @@ export default {
     cversion: '当前版本',
     lversion: '最新版本',
     updateButtonMsg: '目前只支持升级Server',
+    updateDockerNote:
+      '*更新目前只支持docker容器搭建的程序，输入的url地址确保docker内可访问，节点最新版在github中releases的linux版本',
     switchAction: '开',
     switchInactive: '关',
     inputText: '请输入',
@@ -157,9 +163,10 @@ export default {
     project: '根据项目名称检索',
     length: '根据响应长度检索，不支持模糊查找',
     subdomainType: '检索记录类型',
-    subdoaminValue: '检索记录值',
+    subdomainValue: '检索记录值',
     url: '检索URL',
-    inpur: '检索输入源',
+    input: '检索输入源',
+    exampleDomain: 'domain="百度"',
     source: '检索URL来源',
     urlType: '检索URL类型',
     method: '检索Method',
@@ -227,7 +234,8 @@ export default {
     dynamicRouter: '开启动态路由',
     serverDynamicRouter: '服务端动态路由',
     reExperienced: '请重新退出登录体验',
-    fixedMenu: '固定菜单'
+    fixedMenu: '固定菜单',
+    mobileLayoutNotSupported: '移动端模式下不支持切换其它布局'
   },
   size: {
     default: '默认',
@@ -275,7 +283,10 @@ export default {
     login: '登录',
     pluginsManager: '插件管理',
     dashboard: '首页',
-    document: '文档'
+    document: '文档',
+    iconPicker: '图标选择器',
+    treeTable: '树形表格',
+    PicturePreview: '图片预览'
   },
   permission: {
     hasPermission: '请设置操作权限值'
@@ -445,7 +456,11 @@ export default {
     sensitiveNumber: '条敏感信息',
     // ===== 新加的多语言字段 =====
     iconSelected: '已选图标',
-    confirm: '确定'
+    confirm: '确定',
+    rawData: '原始数据',
+    assetChange: '资产变更',
+    oldValue: '旧值',
+    newValue: '新值'
     // =======================
   },
   subdomain: {
@@ -531,7 +546,10 @@ export default {
     info: '信息',
     unknown: '未知',
     nameMsg: '请输入POC名称,POC名称和POC内容中的name应保持一致。',
-    contentMsg: '请输入poc内容'
+    contentMsg: '请输入poc内容',
+    edit: '编辑',
+    delete: '删除',
+    importing: '导入中'
   },
   configuration: {
     subfinder: 'subfinder配置',
@@ -572,7 +590,13 @@ export default {
     amount: '资产数量',
     visualGeneratorTip: '提示：您可以在',
     visualGeneratorLink: 'https://plugin.scope-sentry.top/fingers',
-    visualGeneratorAction: '快速生成指纹'
+    visualGeneratorAction: '快速生成指纹',
+    confirmUpdate: '确认更新',
+    update: '更新',
+    confirmUpdateMsg: '确定要更新 {count} 条指纹数据吗？',
+    nothingToUpdate: '没有需要更新的数据',
+    updateSuccessMsg: '成功更新 {count} 条指纹数据',
+    updateFailedMsg: '更新失败，请稍后重试'
   },
   plugin: {
     name: '插件名称',
@@ -597,6 +621,17 @@ export default {
     runOnceConfirm: '确定要运行此插件一次吗？',
     runOnceSuccess: '插件运行成功',
     runOnceFailed: '插件运行失败',
+    defaultName: '插件-{id}',
+    getListFailed: '获取插件列表失败',
+    unknownPlugin: '未知插件',
+    actioning: '{action}中...',
+    getDataFailed: '获取插件数据失败',
+    nameRequired: 'name 不能为空',
+    moduleRequired: 'module 不能为空',
+    sourceRequired: '源码 不能为空',
+    dictNameRequired: 'dict 不能为空',
+    loadDataFailed: '数据加载失败：{msg}',
+    saveFailed: '保存失败，请稍后再试。',
     parameterConfig: '参数配置',
     parameterName: '参数名称',
     parameterType: '类型',
@@ -871,6 +906,99 @@ export default {
     preview: '封面',
     showOrHiddenSortable: '显示/隐藏排序',
     videoPreview: '视频预览',
-    cardTable: '卡片表格'
+    cardTable: '卡片表格',
+    action1: '操作一',
+    action2: '操作二'
+  },
+  descriptionsDemo: {
+    descriptions: '描述列表',
+    descriptionsDes: '基于 ElementPlus 的 Descriptions 组件二次封装',
+    username: '用户名',
+    nickName: '昵称',
+    phone: '手机号',
+    email: '邮箱',
+    addr: '地址',
+    form: '表单',
+    demoNickName: '梦似花落。',
+    demoSex: '男',
+    demoAddr:
+      '这是一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的地址'
+  },
+  dialogDemo: {
+    dialog: '弹窗',
+    dialogDes: '基于 ElementPlus 的 Dialog 组件二次封装',
+    open: '打开',
+    close: '关闭',
+    submit: '提交',
+    combineWithForm: '结合表单使用'
+  },
+  exampleDemo: {
+    detail: '详情'
+  },
+  imageViewerDemo: {
+    imageViewer: '图片预览',
+    imageViewerDes: '基于 viewerjs 封装的图片预览组件',
+    open: '打开'
+  },
+  inputPasswordDemo: {
+    title: '密码输入框',
+    inputPasswordDes: '带强度校验的密码输入框组件'
+  },
+  richText: {
+    richText: '富文本编辑器',
+    richTextDes: '基于 wangEditor 封装的富文本编辑器',
+    jsonEditor: 'JSON 编辑器',
+    jsonEditorDes: '用于编辑 JSON 内容的编辑器组件',
+    title: '标题',
+    content: '内容',
+    asyncTitle: '异步标题',
+    asyncContent: '异步内容'
+  },
+  aboutPage: {
+    intro: '项目介绍',
+    links: '## 网址',
+    officialSite: '官网&安装&文档：',
+    scanSource: '扫描端源码：',
+    pluginMarket: '插件市场：',
+    sponsorCooperation: '赞助与合作',
+    supportProject: '支持这个项目',
+    supportMsg: '如果你觉得这个项目对你有帮助，可以通过以下方式支持作者的持续开发和维护',
+    sponsor: '赞助',
+    cooperation: '合作',
+    cooperationMsg: '如果有想法可以一起合作',
+    alipay: '支付宝',
+    wechat: '微信',
+    qrAlt: '{name}收款码'
+  },
+  datetime: {
+    justNow: '刚刚',
+    invalid: '无效时间',
+    past: '{n}前',
+    future: '{n}后',
+    lastMonth: '上个月',
+    nextMonth: '下个月',
+    months: '{n} 个月',
+    lastYear: '去年',
+    nextYear: '明年',
+    years: '{n} 年',
+    yesterday: '昨天',
+    tomorrow: '明天',
+    days: '{n} 天',
+    lastWeek: '上周',
+    nextWeek: '下周',
+    weeks: '{n} 周',
+    hours: '{n} 小时',
+    minutes: '{n} 分钟',
+    seconds: '{n} 秒',
+    week: '星期{name}',
+    weekNames: '日,一,二,三,四,五,六'
+  },
+  cropping: {
+    cropping: '图片裁剪',
+    crop: '裁剪'
+  },
+  videoPlayerDemo: {
+    videoPlayer: '视频播放器',
+    dialogShow: '弹窗展示'
   }
 }

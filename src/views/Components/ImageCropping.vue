@@ -3,6 +3,9 @@ import { ContentWrap } from '@/components/ContentWrap'
 import { ImageCropping } from '@/components/ImageCropping'
 import { ref, unref } from 'vue'
 import { ElInput } from 'element-plus'
+import { useI18n } from '@/hooks/web/useI18n'
+
+const { t } = useI18n()
 
 const cropperExpose = ref<InstanceType<typeof ImageCropping>>()
 
@@ -14,8 +17,10 @@ const getBase64 = () => {
 </script>
 
 <template>
-  <ContentWrap title="图片裁剪">
-    <BaseButton type="primary" class="mb-20px" @click="getBase64">裁剪</BaseButton>
+  <ContentWrap :title="t('cropping.cropping')">
+    <BaseButton type="primary" class="mb-20px" @click="getBase64">{{
+      t('cropping.crop')
+    }}</BaseButton>
     <ElInput v-model="base64" class="mb-20px" type="textarea" />
     <ImageCropping
       ref="cropperExpose"

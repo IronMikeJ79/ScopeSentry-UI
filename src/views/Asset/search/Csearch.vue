@@ -55,8 +55,8 @@ const props = defineProps<{
   changeStatisticsHidden?: (boolean) => void
   searchResultCount: number
   sensitiveAllNumber?: number
-  activeSegment?: 'tableSegment' | 'cardSegment' // 可选属性
-  setActiveSegment?: (segment: 'tableSegment' | 'cardSegment', flag: boolean) => void // 可选方法
+  activeSegment?: 'tableSegment' | 'cardSegment' // Optional prop
+  setActiveSegment?: (segment: 'tableSegment' | 'cardSegment', flag: boolean) => void // Optional method
   getFilter: () => { [key: string]: any }
   iconData?: { value: string; number: number; icon_hash: string }[]
 }>()
@@ -113,7 +113,7 @@ const logicHelp = [
 const searchHelpData = AssignmentHelp.concat(logicHelp)
 const dialogVisible = ref(false)
 
-// 保存列显示配置到localStorage
+// Save column visibility config to localStorage
 const saveColumnConfig = () => {
   const config = props.crudSchemas.reduce((acc, column) => {
     if (column.field != 'select') {
@@ -124,7 +124,7 @@ const saveColumnConfig = () => {
   localStorage.setItem(`columnConfig_${props.index}`, JSON.stringify(config))
 }
 
-// 从localStorage加载配置
+// Load the config from localStorage
 const loadColumnConfig = () => {
   const savedConfig = JSON.parse(localStorage.getItem(`columnConfig_${props.index}`) || '{}')
   props.crudSchemas.forEach((col) => {
@@ -134,7 +134,7 @@ const loadColumnConfig = () => {
   })
 }
 
-// 初始化加载配置
+// Load the config on startup
 loadColumnConfig()
 watch(
   () => props.crudSchemas,
@@ -203,7 +203,7 @@ const querySearch = (queryString, cb) => {
     assignmen.value = false
   }
   if (keyword.value) {
-    console.log('第一')
+    console.log('keyword branch')
     if (logic.value) {
       queryString = queryString.replace(selectedKeyword.value, '').trim()
     }
@@ -214,14 +214,14 @@ const querySearch = (queryString, cb) => {
     return
   }
   if (assignmen.value) {
-    console.log('第2')
+    console.log('assignment branch')
     const searchStr = queryString.replace(selectedKeyword.value, '').trim()
     const results = AssignmentHelp.filter((item) => item.operator.includes(searchStr))
     cb(results)
     return
   }
   if (logic.value && queryString.endsWith(' ')) {
-    console.log('第3')
+    console.log('logic branch')
     const searchStr = queryString.replace(searchParams.value, '').trim()
     const results = logicHelp.filter((item) => item.operator.includes(searchStr))
     cb(results)
@@ -311,7 +311,7 @@ if (task !== undefined && task !== '') {
 }
 const savedActiveSegmentConfig = JSON.parse(localStorage.getItem('assetActiveSegment') || '{}')
 
-// 如果配置中有 activeSegment，则使用它，否则使用默认值
+// Use activeSegment from the saved config when present, otherwise keep the default
 if (savedActiveSegmentConfig && savedActiveSegmentConfig.activeSegment) {
   if (props.setActiveSegment) {
     props.setActiveSegment(savedActiveSegmentConfig.activeSegment, false)
@@ -355,7 +355,7 @@ function clearAllTags() {
 const emit = defineEmits<{
   (event: 'update-column-visibility', payload: { field: string; hidden: boolean }): void
 }>()
-// 处理开关变化，通知父组件
+// Handle switch changes and notify the parent component
 const handleSwitchChange = (field) => {
   emit('update-column-visibility', { field: field.field, hidden: field.hidden })
 }
@@ -658,7 +658,7 @@ const openCreateTask = async () => {
   </Dialog>
 </template>
 <style scoped>
-/* 搜索工具栏 - 使用 flexbox 布局 */
+/* Search toolbar - uses flexbox layout */
 .search-toolbar {
   display: flex;
   align-items: center;
@@ -669,7 +669,7 @@ const openCreateTask = async () => {
   margin-bottom: 10px;
 }
 
-/* 搜索框容器 - 占据主要空间但有限制 */
+/* Search input container - takes the main space, within limits */
 .search-input-container {
   flex: 1 1 600px;
   min-width: 500px;
@@ -686,14 +686,14 @@ const openCreateTask = async () => {
   max-width: 100% !important;
 }
 
-/* 确保 ElAutocomplete 输入框高度一致 */
+/* Keep the ElAutocomplete input height consistent */
 .search-autocomplete :deep(.el-input__wrapper) {
   height: 40px;
   box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
   width: 100% !important;
 }
 
-/* 确保 ElAutocomplete 容器宽度 */
+/* Keep the ElAutocomplete container width */
 .search-autocomplete :deep(.el-autocomplete) {
   width: 100% !important;
   display: block;
@@ -708,7 +708,7 @@ const openCreateTask = async () => {
   line-height: 38px;
 }
 
-/* 工具栏按钮 */
+/* Toolbar buttons */
 .toolbar-btn {
   flex-shrink: 1;
   white-space: nowrap;
@@ -721,7 +721,7 @@ const openCreateTask = async () => {
   text-overflow: ellipsis;
 }
 
-/* 任务选择器 */
+/* Task selector */
 .task-select-container {
   flex-shrink: 1;
   width: 200px;
@@ -737,7 +737,7 @@ const openCreateTask = async () => {
   width: 100%;
 }
 
-/* 确保 ElSelect 高度一致 */
+/* Keep the ElSelect height consistent */
 .task-select :deep(.el-select__wrapper) {
   height: 40px;
   box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
@@ -747,7 +747,7 @@ const openCreateTask = async () => {
   line-height: 38px;
 }
 
-/* 项目选择器 */
+/* Project selector */
 .project-select-container {
   flex-shrink: 1;
   width: 200px;
@@ -763,7 +763,7 @@ const openCreateTask = async () => {
   width: 100%;
 }
 
-/* 确保 ElTreeSelect 高度一致 */
+/* Keep the ElTreeSelect height consistent */
 .project-select :deep(.el-select__wrapper) {
   height: 40px;
   box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
@@ -773,7 +773,7 @@ const openCreateTask = async () => {
   line-height: 38px;
 }
 
-/* 下拉菜单 */
+/* Dropdown menu */
 .toolbar-dropdown {
   flex-shrink: 1;
   height: 40px;
@@ -783,7 +783,7 @@ const openCreateTask = async () => {
   min-width: fit-content;
 }
 
-/* 确保下拉菜单中的按钮高度一致 */
+/* Keep the height of buttons inside the dropdown consistent */
 .toolbar-dropdown :deep(.el-button) {
   height: 40px;
   padding: 0 15px;
@@ -814,7 +814,7 @@ const openCreateTask = async () => {
   border-color: var(--el-border-color-hover);
 }
 
-/* 分段控制器 */
+/* Segment control */
 .segment-container {
   flex-shrink: 0;
   display: flex;
@@ -858,7 +858,7 @@ const openCreateTask = async () => {
   background-color: var(--el-color-primary);
 }
 
-/* 响应式设计 */
+/* Responsive design */
 @media (max-width: 1600px) {
   .search-input-container {
     flex: 1 1 550px;
@@ -1053,7 +1053,7 @@ const openCreateTask = async () => {
   }
 }
 
-/* 结果信息行 */
+/* Result info row */
 .result-info-row {
   margin-top: 10px;
   clear: both;
@@ -1065,7 +1065,7 @@ const openCreateTask = async () => {
   }
 }
 
-/* 原有样式 */
+/* Legacy styles */
 .custom-button:hover {
   background-color: transparent !important;
   color: inherit !important;

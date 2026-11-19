@@ -1,24 +1,24 @@
 /**
- * 请求成功状态码
+ * Success status code
  */
 export const SUCCESS_CODE = 200
 
 /**
- * 请求contentType
+ * Request contentType
  */
 export const CONTENT_TYPE = 'application/json'
 
 /**
- * 请求超时时间
+ * Request timeout
  */
 export const REQUEST_TIMEOUT = 60000
 
 /**
- * 不重定向白名单
+ * Whitelist of routes that are not redirected
  */
 export const NO_REDIRECT_WHITE_LIST = ['/login']
 
 /**
- * 不重置路由白名单
+ * Whitelist of routes whose routers are not reset
  */
 export const NO_RESET_WHITE_LIST = ['Redirect', 'Login', 'NoFind', 'Root']

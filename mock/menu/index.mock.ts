@@ -4,7 +4,7 @@ import { SUCCESS_CODE } from '@/constants'
 const timeout = 1000
 
 export default [
-  // 列表接口
+  // List API
   {
     url: '/mock/menu/list',
     method: 'get',

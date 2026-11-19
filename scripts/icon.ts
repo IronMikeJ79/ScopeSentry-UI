@@ -40,7 +40,7 @@ async function generateIcon() {
         message: 'Select the icon set that needs to be generated?'
       }
     ])
-    // ↓命令行问答的答案
+    // ↓ Answer to the command-line prompt
     .then(async (answers) => {
       const { iconSet } = answers
       // const isOnLine = useType === 'onLine'
@@ -58,7 +58,7 @@ async function generateIcon() {
             path.join('src/components/IconPicker/src/data', `icons.${prefix}.ts`),
             `export default ${JSON.stringify({ name: info.name, prefix, icons })}`
           )
-          // ↓分类处理完成，push类型名称
+          // ↓ Categorization finished, push the type name
           prefixSet.push(prefix)
         }
       }

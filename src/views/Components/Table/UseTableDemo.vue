@@ -36,13 +36,13 @@ const columns = reactive<TableColumn[]>([
         return (
           <div class="ml-30px">
             <div>
-              {t('tableDemo.title')}：{row.title}
+              {t('tableDemo.title')}: {row.title}
             </div>
             <div>
-              {t('tableDemo.author')}：{row.author}
+              {t('tableDemo.author')}: {row.author}
             </div>
             <div>
-              {t('tableDemo.displayTime')}：{row.display_time}
+              {t('tableDemo.displayTime')}: {row.display_time}
             </div>
           </div>
         )

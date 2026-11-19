@@ -1,6 +1,10 @@
 export default {
   common: {
     clearAll: 'Clear All',
+    loading: 'Loading...',
+    noMore: 'No more',
+    searchIcon: 'Search icons',
+    preview: 'Preview',
     selectCategory: 'Select Category',
     about: 'About',
     unprocessed: 'Unprocessed',
@@ -28,6 +32,8 @@ export default {
     cversion: 'Current Version',
     lversion: 'Latest Version',
     updateButtonMsg: 'Currently, only server upgrades are supported',
+    updateDockerNote:
+      '*Updates currently only support deployments built with Docker. Make sure the URL you enter is reachable from inside the Docker container. The latest node version is the linux build in the GitHub releases.',
     switchAction: 'On',
     switchInactive: 'Off',
     inputText: 'Please input',
@@ -160,6 +166,7 @@ export default {
     subdomainValue: 'Retrieve record value',
     url: 'Retrieve URL',
     input: 'Retrieve input source',
+    exampleDomain: 'domain="example.com"',
     source: 'Retrieve URL source',
     urlType: 'Retrieve URL type',
     method: 'Retrieve Method',
@@ -228,7 +235,8 @@ export default {
     dynamicRouter: 'Enable dynamic router',
     serverDynamicRouter: 'Server dynamic router',
     reExperienced: 'Please exit the login experience again',
-    fixedMenu: 'Fixed menu'
+    fixedMenu: 'Fixed menu',
+    mobileLayoutNotSupported: 'Switching to another layout is not supported in mobile mode'
   },
   size: {
     default: 'Default',
@@ -276,7 +284,10 @@ export default {
     login: 'Login',
     pluginsManager: 'Plugins Manager',
     dashboard: 'Dashboard',
-    document: 'Document'
+    document: 'Document',
+    iconPicker: 'Icon Picker',
+    treeTable: 'Tree Table',
+    PicturePreview: 'Picture Preview'
   },
   permission: {
     hasPermission: 'Please set the operation permission value'
@@ -341,6 +352,7 @@ export default {
     url: 'URL',
     msgUrl: 'Get more page entries',
     sensitiveInfoScan: 'SensitiveInfo Scan',
+    pageMonitoring: 'Monitor page changes',
     msgPageMonitoringAll: 'Monitoring all pages',
     msgPageMonitoringJs: 'Monitoring JS pages only',
     msgCrawler:
@@ -447,7 +459,11 @@ export default {
     sensitiveNumber: 'sensitive information',
     // ===== 新加多语言字段 =====
     iconSelected: 'Selected Icons',
-    confirm: 'Confirm'
+    confirm: 'Confirm',
+    rawData: 'Raw Data',
+    assetChange: 'Asset Changes',
+    oldValue: 'Old Value',
+    newValue: 'New Value'
     // ====================
   },
   subdomain: {
@@ -534,7 +550,10 @@ export default {
     unknown: 'Unknown',
     nameMsg:
       'Please enter the POC name. The POC name and the name in the POC content should be consistent.',
-    contentMsg: 'Please enter poc content'
+    contentMsg: 'Please enter poc content',
+    edit: 'Edit',
+    delete: 'Delete',
+    importing: 'Importing'
   },
   configuration: {
     subfinder: 'subfinder configuration',
@@ -576,7 +595,13 @@ export default {
     amount: 'Asset Quantity',
     visualGeneratorTip: 'Tip: You can perform visual fingerprint generation at',
     visualGeneratorLink: 'https://plugin.scope-sentry.top/fingers',
-    visualGeneratorAction: 'to quickly generate fingerprints'
+    visualGeneratorAction: 'to quickly generate fingerprints',
+    confirmUpdate: 'Confirm Update',
+    update: 'Update',
+    confirmUpdateMsg: 'Are you sure you want to update {count} fingerprint records?',
+    nothingToUpdate: 'There is no data to update',
+    updateSuccessMsg: 'Successfully updated {count} fingerprint records',
+    updateFailedMsg: 'Update failed, please try again later'
   },
   plugin: {
     name: 'Name',
@@ -598,6 +623,21 @@ export default {
     reInstall: 'Reinstall',
     reCheck: 'Recheck',
     uninstall: 'Uninstall',
+    runOnce: 'Run Once',
+    runOnceConfirm: 'Are you sure you want to run this plugin once?',
+    runOnceSuccess: 'Plugin ran successfully',
+    runOnceFailed: 'Failed to run the plugin',
+    defaultName: 'Plugin-{id}',
+    getListFailed: 'Failed to get the plugin list',
+    unknownPlugin: 'Unknown plugin',
+    actioning: '{action}...',
+    getDataFailed: 'Failed to get plugin data',
+    nameRequired: 'name cannot be empty',
+    moduleRequired: 'module cannot be empty',
+    sourceRequired: 'source code cannot be empty',
+    dictNameRequired: 'dict cannot be empty',
+    loadDataFailed: 'Failed to load data: {msg}',
+    saveFailed: 'Failed to save, please try again later.',
     parameterConfig: 'Parameter Configuration',
     parameterName: 'Parameter Name',
     parameterType: 'Type',
@@ -878,6 +918,100 @@ export default {
     preview: 'Preview',
     showOrHiddenSortable: 'Show or hidden sortable',
     videoPreview: 'Video preview',
-    cardTable: 'Card table'
+    cardTable: 'Card table',
+    action1: 'Operation one',
+    action2: 'Operation two'
+  },
+  descriptionsDemo: {
+    descriptions: 'Descriptions',
+    descriptionsDes: 'Secondary encapsulation based on the ElementPlus Descriptions component',
+    username: 'Username',
+    nickName: 'Nickname',
+    phone: 'Phone number',
+    email: 'Email',
+    addr: 'Address',
+    form: 'Form',
+    demoNickName: 'Falling petals.',
+    demoSex: 'Male',
+    demoAddr:
+      'This is a very long address used to demonstrate how the descriptions list wraps long text.'
+  },
+  dialogDemo: {
+    dialog: 'Dialog',
+    dialogDes: 'Secondary encapsulation based on the ElementPlus Dialog component',
+    open: 'Open',
+    close: 'Close',
+    submit: 'Submit',
+    combineWithForm: 'Use with a form'
+  },
+  exampleDemo: {
+    detail: 'Detail'
+  },
+  imageViewerDemo: {
+    imageViewer: 'Image Viewer',
+    imageViewerDes: 'Image preview component based on viewerjs',
+    open: 'Open'
+  },
+  inputPasswordDemo: {
+    title: 'Password Input',
+    inputPasswordDes: 'Password input component with strength validation'
+  },
+  richText: {
+    richText: 'Rich Text Editor',
+    richTextDes: 'Rich text editor based on wangEditor',
+    jsonEditor: 'JSON Editor',
+    jsonEditorDes: 'Editor component for editing JSON content',
+    title: 'Title',
+    content: 'Content',
+    asyncTitle: 'Async title',
+    asyncContent: 'Async content'
+  },
+  aboutPage: {
+    intro: 'Project Introduction',
+    links: '## Links',
+    officialSite: 'Website, installation and documentation:',
+    scanSource: 'Scanner source code:',
+    pluginMarket: 'Plugin marketplace:',
+    sponsorCooperation: 'Sponsorship & Cooperation',
+    supportProject: 'Support this project',
+    supportMsg:
+      'If you find this project helpful, you can support the author in continuing development and maintenance in the following ways',
+    sponsor: 'Sponsor',
+    cooperation: 'Cooperation',
+    cooperationMsg: 'Contact us if you would like to cooperate on something',
+    alipay: 'Alipay',
+    wechat: 'WeChat',
+    qrAlt: '{name} payment QR code'
+  },
+  datetime: {
+    justNow: 'just now',
+    invalid: 'invalid time',
+    past: '{n} ago',
+    future: 'in {n}',
+    lastMonth: 'last month',
+    nextMonth: 'next month',
+    months: '{n} months',
+    lastYear: 'last year',
+    nextYear: 'next year',
+    years: '{n} years',
+    yesterday: 'yesterday',
+    tomorrow: 'tomorrow',
+    days: '{n} days',
+    lastWeek: 'last week',
+    nextWeek: 'next week',
+    weeks: '{n} weeks',
+    hours: '{n} hours',
+    minutes: '{n} minutes',
+    seconds: '{n} seconds',
+    week: '{name}',
+    weekNames: 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday'
+  },
+  cropping: {
+    cropping: 'Image Cropping',
+    crop: 'Crop'
+  },
+  videoPlayerDemo: {
+    videoPlayer: 'Video Player',
+    dialogShow: 'Show in dialog'
   }
 }
