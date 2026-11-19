@@ -32,7 +32,7 @@ const defaultResponseInterceptors = (response: AxiosResponse) => {
     return response
   }
   if (response?.config?.responseType === 'blob') {
-    // 如果是文件流，直接过
+    // Pass file streams straight through
     return response
   } else if (response.data.code === SUCCESS_CODE) {
     if (response?.data?.message) {

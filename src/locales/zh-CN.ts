@@ -4,6 +4,7 @@ export default {
     loading: '加载中...',
     noMore: '没有更多了',
     searchIcon: '搜索图标',
+    preview: '预览',
     selectCategory: '分类选择',
     about: '关于',
     unprocessed: '未处理',
@@ -917,7 +918,11 @@ export default {
     phone: '手机号',
     email: '邮箱',
     addr: '地址',
-    form: '表单'
+    form: '表单',
+    demoNickName: '梦似花落。',
+    demoSex: '男',
+    demoAddr:
+      '这是一个很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长很长的地址'
   },
   dialogDemo: {
     dialog: '弹窗',
@@ -987,5 +992,13 @@ export default {
     seconds: '{n} 秒',
     week: '星期{name}',
     weekNames: '日,一,二,三,四,五,六'
+  },
+  cropping: {
+    cropping: '图片裁剪',
+    crop: '裁剪'
+  },
+  videoPlayerDemo: {
+    videoPlayer: '视频播放器',
+    dialogShow: '弹窗展示'
   }
 }

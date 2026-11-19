@@ -1143,7 +1143,7 @@ for (let i = 0; i < 4; i++) {
 }
 
 export default [
-  // 列表接口
+  // List API
   {
     url: '/mock/role/list',
     method: 'get',
@@ -1169,7 +1169,7 @@ export default [
       }
     }
   },
-  // 列表接口
+  // List API
   {
     url: '/mock/role/list2',
     method: 'get',

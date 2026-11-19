@@ -128,36 +128,36 @@ const crudSchemas = reactive<CrudSchema[]>([
 ])
 let index = 'IPAsset'
 crudSchemas.forEach((schema) => {
-  schema.hidden = schema.hidden ?? false // 如果没有 hidden 属性，添加并设置为 false
+  schema.hidden = schema.hidden ?? false // Add the hidden property if missing and default it to false
 })
 let statisticsHidden = ref(false)
-// 从localStorage读取配置并更新列的显示状态
+// Read the config from localStorage and update column visibility
 const loadColumnConfig = () => {
   const savedConfig = JSON.parse(localStorage.getItem(`columnConfig_${index}`) || '{}')
   console.log(savedConfig)
   crudSchemas.forEach((col) => {
     if (savedConfig[col.field] !== undefined && col.field != 'select') {
-      col.hidden = savedConfig[col.field] // 恢复列的显示状态
+      col.hidden = savedConfig[col.field] // Restore the column's visibility
     }
   })
   statisticsHidden.value = savedConfig['statisticsHidden']
 }
-// 保存配置到localStorage
+// Save the config to localStorage
 const saveColumnConfig = () => {
   const config = crudSchemas.reduce((acc, col) => {
-    acc[col.field] = col.hidden // 保存每列的显示状态
+    acc[col.field] = col.hidden // Save each column's visibility
     return acc
   }, {})
   config['statisticsHidden'] = statisticsHidden.value
-  localStorage.setItem(`columnConfig_${index}`, JSON.stringify(config)) // 按index保存配置
+  localStorage.setItem(`columnConfig_${index}`, JSON.stringify(config)) // Save the config under this index
 }
 
-// 处理列显示状态变化
+// Handle column visibility changes
 const handleColumnVisibilityChange = ({ field, hidden }) => {
   console.log(field, hidden)
   const columnIndex = crudSchemas.findIndex((col) => col.field === field)
   if (columnIndex !== -1) {
-    // 使用对象的展开运算符来创建一个新的对象，并更新隐藏属性
+    // Update the hidden property on the schema entry
     crudSchemas[columnIndex].hidden = hidden
   }
   saveColumnConfig()
@@ -176,8 +176,8 @@ const { tableRegister, tableState, tableMethods } = useTable({
   immediate: false
 })
 const { loading, dataList, total, currentPage, pageSize } = tableState
-// 单独设置 IP 组件的 pageSize 默认值
-pageSize.value = 10 // 可以根据需要修改为你想要的默认值
+// Set the IP component's default pageSize separately
+pageSize.value = 10 // Adjust this default value as needed
 const { getList, getElTableExpose } = tableMethods
 function tableHeaderColor() {
   return { background: 'var(--el-fill-color-light)' }
@@ -211,29 +211,29 @@ const getFilter = () => {
 }
 const spanMethod = ({ row, column, rowIndex, columnIndex }) => {
   // columnIndex:
-  // 0 = selection (复选框列)
+  // 0 = selection (checkbox column)
   // 1 = IP
   // 2 = Port
 
-  // 📌 Selection 列合并（与 IP 列同步）
+  // 📌 Merge Selection column (in sync with the IP column)
   if (columnIndex === 0) {
     if (row.ipRowSpan > 0) {
-      return [row.ipRowSpan, 1] // 显示并合并
+      return [row.ipRowSpan, 1] // Show and merge
     } else {
-      return [0, 0] // 隐藏单元格
+      return [0, 0] // Hide the cell
     }
   }
 
-  // 📌 IP 合并
+  // 📌 Merge IP
   if (columnIndex === 1) {
     if (row.ipRowSpan > 0) {
-      return [row.ipRowSpan, 1] // 显示并合并
+      return [row.ipRowSpan, 1] // Show and merge
     } else {
-      return [0, 0] // 隐藏单元格
+      return [0, 0] // Hide the cell
     }
   }
 
-  // 📌 Port 合并
+  // 📌 Merge Port
   if (columnIndex === 2) {
     if (row.portRowSpan > 0) {
       return [row.portRowSpan, 1]
@@ -242,7 +242,7 @@ const spanMethod = ({ row, column, rowIndex, columnIndex }) => {
     }
   }
 
-  // 📌 默认正常显示
+  // 📌 Show normally by default
   return [1, 1]
 }
 </script>

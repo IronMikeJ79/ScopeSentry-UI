@@ -210,7 +210,7 @@ const cardList = [
 ]
 
 export default [
-  // 树形列表接口
+  // Tree list API
   {
     url: '/mock/example/treeList',
     method: 'get',
@@ -233,7 +233,7 @@ export default [
       }
     }
   },
-  // 列表接口
+  // List API
   {
     url: '/mock/example/list',
     method: 'get',
@@ -256,7 +256,7 @@ export default [
       }
     }
   },
-  // 保存接口
+  // Save API
   {
     url: '/mock/example/save',
     method: 'post',
@@ -287,7 +287,7 @@ export default [
       }
     }
   },
-  // 详情接口
+  // Detail API
   {
     url: '/mock/example/detail',
     method: 'get',
@@ -303,7 +303,7 @@ export default [
       }
     }
   },
-  // 删除接口
+  // Delete API
   {
     url: '/mock/example/delete',
     method: 'post',

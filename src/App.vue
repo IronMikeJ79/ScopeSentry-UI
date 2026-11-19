@@ -19,27 +19,27 @@ const greyMode = computed(() => appStore.getGreyMode)
 
 const { getStorage } = useStorage('localStorage')
 
-// 根据浏览器当前主题设置系统主题色
+// Set the theme color from the browser's current theme
 const setDefaultTheme = () => {
   if (getStorage('isDark') !== null) {
-    // 如果用户已经手动设置过主题，使用用户设置
+    // The user has already set the theme manually, so use their choice
     const isDarkValue = getStorage('isDark')
     appStore.setIsDark(isDarkValue)
-    // 初始化时也需要更新菜单和头部主题
+    // The menu and header themes also need updating on init
     const color = getCssVar('--el-bg-color')
     appStore.setMenuTheme(color)
     appStore.setHeaderTheme(color)
   } else {
-    // 如果用户没有设置过，则根据系统主题自动设置
+    // Fall back to the system theme when the user has not set one
     const isDarkTheme = isDark()
     appStore.setIsDark(isDarkTheme)
-    // 初始化时也需要更新菜单和头部主题
+    // The menu and header themes also need updating on init
     const color = getCssVar('--el-bg-color')
     appStore.setMenuTheme(color)
     appStore.setHeaderTheme(color)
   }
 
-  // 初始化标签页高度
+  // Initialize the tabs view height
   const tagsViewEnabled = appStore.getTagsView
   setCssVar('--tags-view-height', tagsViewEnabled ? '35px' : '0px')
 }

@@ -138,20 +138,20 @@ const confirmDelete = async () => {
   }
 }
 
-// 更新相关的状态
+// Update-related state
 const updateCount = ref(0)
 const currentVersion = ref('')
 const updateLoading = ref(false)
 
-// 获取版本和数量
+// Fetch the version and count
 const fetchVersionAndCount = async () => {
   try {
-    // 获取版本
+    // Fetch the version
     const versionRes = await getFingerprintVersionApi()
     const version = versionRes.data.version
     currentVersion.value = version
 
-    // 使用版本获取数量
+    // Use the version to fetch the count
     const countRes = await getCountByUpdateTimeApi(version)
     updateCount.value = Number(countRes.data.count) || 0
   } catch (error) {

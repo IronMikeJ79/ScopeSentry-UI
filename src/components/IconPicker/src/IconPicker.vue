@@ -16,9 +16,9 @@ const init = async (icon?: string) => {
   const iconInfo = icon.split(':')
   iconName.value = iconInfo[0]
   const wrapIndex = icons.findIndex((item) => item.prefix === iconInfo[0])
-  // 查询当前icon的索引
+  // Find the index of the current icon
   const index = filterItemIcons(icons[wrapIndex].icons).findIndex((item) => item === icon)
-  // 计算当前icon的页码
+  // Calculate the page number of the current icon
   await nextTick()
   currentPage.value = Math.ceil((index + 1) / unref(pageSize))
 }

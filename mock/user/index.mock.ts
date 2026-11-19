@@ -26,7 +26,7 @@ const List: {
 ]
 
 export default [
-  // 列表接口
+  // List API
   {
     url: '/mock/user/list',
     method: 'get',
@@ -50,7 +50,7 @@ export default [
       }
     }
   },
-  // 登录接口
+  // Login API
   {
     url: '/mock/user/login',
     method: 'post',
@@ -75,7 +75,7 @@ export default [
       }
     }
   },
-  // 退出接口
+  // Logout API
   {
     url: '/mock/user/loginOut',
     method: 'get',

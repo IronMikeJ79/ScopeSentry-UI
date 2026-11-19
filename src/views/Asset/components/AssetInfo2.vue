@@ -145,8 +145,8 @@ let AssetstatisticsData: Ref<{
   Product: [],
   Icon: []
 })
-let iconPage = 1 // 当前页
-let iconPageSize = 50 // 每次加载的数据量
+let iconPage = 1 // Current page
+let iconPageSize = 50 // Amount of data loaded per request
 
 const getAssetstatistics = async () => {
   if (statisticsHidden.value) {
@@ -352,7 +352,7 @@ let crudSchemas = reactive<CrudSchema[]>([
       if (tags == null) {
         tags = []
       }
-      // 初始化状态
+      // Initialize the row state
       if (!rowStateMap[row.id]) {
         rowStateMap[row.id] = {
           inputVisible: false,
@@ -363,11 +363,11 @@ let crudSchemas = reactive<CrudSchema[]>([
       const rowState = rowStateMap[row.id]
       const handleInputConfirm = async () => {
         if (rowState.inputValue) {
-          tags.push(rowState.inputValue) // 将输入值添加到 tags 中
+          tags.push(rowState.inputValue) // Add the entered value to tags
           addTagApi(row.id, index, rowState.inputValue)
         }
-        rowState.inputVisible = false // 隐藏输入框
-        rowState.inputValue = '' // 清空输入框的值
+        rowState.inputVisible = false // Hide the input
+        rowState.inputValue = '' // Clear the input value
       }
       const deleteTag = async (row: Recordable, tag: string) => {
         if (!row.tags) {
@@ -375,10 +375,10 @@ let crudSchemas = reactive<CrudSchema[]>([
         }
         const indexT = row.tags.indexOf(tag)
         if (indexT > -1) {
-          row.tags.splice(indexT, 1) // 从数组中移除指定的元素
+          row.tags.splice(indexT, 1) // Remove the item from the array
         }
         await deleteTagApi(row.id, index, tag)
-        // 如需强制刷新表格数据，可取消下行注释
+        // Uncomment the next line to force a refresh of the table data
         // await getList()
       }
       const showInput = () => {
@@ -390,19 +390,19 @@ let crudSchemas = reactive<CrudSchema[]>([
           // }
         })
       }
-      // 标签点击处理函数
+      // Tag click handler
       const handleTagClick = (event: MouseEvent, tag: string) => {
         if ((event.target as HTMLElement).classList.contains('el-tag__close')) {
-          // 点击关闭按钮时不处理
+          // Ignore clicks on the close button
           return
         }
-        // 这里可以添加处理点击事件的逻辑
+        // Click handling logic goes here
         console.log('Tag clicked:', tag)
         changeTags('tags', tag)
       }
 
       return h(ElRow, {}, () => [
-        // 渲染标签
+        // Render the tags
         ...tags.map((tag) =>
           h(ElCol, { span: 24, key: tag }, () => [
             h('div', { onClick: (event: MouseEvent) => handleTagClick(event, tag) }, [
@@ -411,7 +411,7 @@ let crudSchemas = reactive<CrudSchema[]>([
           ])
         ),
 
-        // 输入框或按钮
+        // Input or button
         h(
           ElCol,
           { span: 24 },
@@ -419,16 +419,16 @@ let crudSchemas = reactive<CrudSchema[]>([
             ? () =>
                 h(ElInput, {
                   ref: rowState.inputRef,
-                  modelValue: rowState.inputValue, // 双向绑定输入框值
+                  modelValue: rowState.inputValue, // Two-way bind the input value
                   'onUpdate:modelValue': (value: string) => (rowState.inputValue = value),
                   class: 'w-20',
                   size: 'small',
                   onKeyup: (event: KeyboardEvent) => {
                     if (event.key === 'Enter') {
-                      handleInputConfirm() // 只在回车键被按下时触发
+                      handleInputConfirm() // Only triggers on Enter
                     }
                   },
-                  onBlur: handleInputConfirm // 失去焦点时调用 handleInputConfirm
+                  onBlur: handleInputConfirm // Runs handleInputConfirm when focus is lost
                 })
             : () =>
                 h(
@@ -549,7 +549,7 @@ let crudSchemas = reactive<CrudSchema[]>([
               maxHeight: '250px'
             }}
             onError={(e) => {
-              // 404 或其他错误时，隐藏图片（不显示裂开的图片）
+              // Hide the image on 404 or other errors (no broken image icon)
               ;(e.target as HTMLImageElement).style.display = 'none'
             }}
             onClick={() => handleImageClick(imageSrc)}
@@ -602,38 +602,38 @@ const handleImageClick = (screenshot: string) => {
 }
 let index = 'asset'
 crudSchemas.forEach((schema) => {
-  schema.hidden = schema.hidden ?? false // 如果没有 hidden 属性，添加并设置为 false
+  schema.hidden = schema.hidden ?? false // Default hidden to false when the column has no hidden flag
 })
 let statisticsHidden = ref(false)
-// 从localStorage读取配置并更新列的显示状态
+// Read the saved config from localStorage and apply the column visibility
 const loadColumnConfig = () => {
   const savedConfig = JSON.parse(localStorage.getItem(`columnConfig_${index}`) || '{}')
   console.log(savedConfig)
   crudSchemas.forEach((col) => {
     if (savedConfig[col.field] !== undefined && col.field != 'select') {
-      col.hidden = savedConfig[col.field] // 复列的显示状态
+      col.hidden = savedConfig[col.field] // Restore the column visibility
     }
   })
   statisticsHidden.value = savedConfig['statisticsHidden']
 }
 
-// 保存配置到localStorage
+// Save the config to localStorage
 const saveColumnConfig = () => {
   const config = crudSchemas.reduce((acc, col) => {
-    acc[col.field] = col.hidden // 保存每列的显示状态
+    acc[col.field] = col.hidden // Keep each column's visibility
     return acc
   }, {})
   config['statisticsHidden'] = statisticsHidden.value
   console.log('statisticsHidden.value', statisticsHidden.value)
-  localStorage.setItem(`columnConfig_${index}`, JSON.stringify(config)) // 按index保存配置
+  localStorage.setItem(`columnConfig_${index}`, JSON.stringify(config)) // Store it under the index
 }
 
-// 处理列显示状态变化
+// Handle column visibility changes
 const handleColumnVisibilityChange = ({ field, hidden }) => {
   console.log(field, hidden)
   const columnIndex = crudSchemas.findIndex((col) => col.field === field)
   if (columnIndex !== -1) {
-    // 使用对象的展开运算符来创建一个新的对象，并更新隐藏属性
+    // Update the hidden flag of the matched column
     crudSchemas[columnIndex].hidden = hidden
   }
   saveColumnConfig()
@@ -745,14 +745,14 @@ const openDetail = (id: string, host: string, ip: string, port: number) => {
 }
 
 const isLoading = ref(false)
-// 滚动监听，触发加载更多
+// Scroll listener that loads more entries
 const scrollbarRef = ref<InstanceType<typeof ElScrollbar>>()
 
 const handleScroll = ({ scrollTop }: { scrollTop: number }) => {
   const wrap = scrollbarRef.value?.wrapRef
   if (!wrap || isLoading.value) return
   const { scrollHeight, clientHeight } = wrap
-  // 当滚动到距离底部 20px 时触发加载
+  // Trigger loading when scrolled within 20px of the bottom
   if (scrollHeight - (scrollTop + clientHeight) < 20) {
     loadMoreIcons()
   }
@@ -779,14 +779,14 @@ const activeSegment = ref<'tableSegment' | 'cardSegment'>('tableSegment')
 
 const setActiveSegment = (segment: 'tableSegment' | 'cardSegment', flag: boolean) => {
   activeSegment.value = segment
-  // 将配置存储到 localStorage
+  // Save the setting to localStorage
   localStorage.setItem(`assetActiveSegment`, JSON.stringify({ activeSegment: segment }))
   if (flag) {
     getList()
   }
 }
 const websites = ref<AssetData[]>([])
-// 跟踪每个图片的加载状态：'loading' | 'loaded' | 'error'
+// Tracks each image's load state: 'loading' | 'loaded' | 'error'
 const imageLoadStates = ref<Record<string, 'loading' | 'loaded' | 'error'>>({})
 const handleImageLoad = (hash: string) => {
   if (imageLoadStates.value[hash] !== 'loaded') {
@@ -800,12 +800,12 @@ const handleImageError = (hash: string) => {
 }
 const getAssetCardData = async () => {
   websites.value = []
-  // 重置图片加载状态
+  // Reset the image load states
   imageLoadStates.value = {}
   getTotal(searchParams.value, currentPage.value, pageSize.value, filter)
   const res = await getAssetCardApi(searchParams.value, currentPage.value, pageSize.value, filter)
   websites.value = res.data.list
-  // 初始化所有图片为加载中状态
+  // Mark every image as loading at first
   res.data.list.forEach((site) => {
     if (site.ResponseBodyHash) {
       imageLoadStates.value[site.ResponseBodyHash] = 'loading'
@@ -814,11 +814,11 @@ const getAssetCardData = async () => {
 }
 const getStatusColor = (statusValue) => {
   if (statusValue < 300) {
-    return '#2eb98a' // 绿色，表示成功
+    return '#2eb98a' // Green, indicates success
   } else if (statusValue < 400) {
-    return '#ff9800' // 橙色，表示重定向
+    return '#ff9800' // Orange, indicates a redirect
   } else {
-    return '#ff5252' // 红色，表示错误
+    return '#ff5252' // Red, indicates an error
   }
 }
 const getFilter = () => {
@@ -829,7 +829,7 @@ const selectedIcons = ref<{ value: string; number: number; icon_hash: string }[]
 const toggleSelectIcon = (iconItem: { value: string; number: number; icon_hash: string }) => {
   const idx = selectedIcons.value.findIndex((i) => i.icon_hash === iconItem.icon_hash)
   if (idx > -1) {
-    selectedIcons.value.splice(idx, 1) // 已选再点取消
+    selectedIcons.value.splice(idx, 1) // Clicking a selected icon again deselects it
   } else {
     selectedIcons.value.push(iconItem)
   }
@@ -952,7 +952,7 @@ const confirmSelectedIcons = () => {
               </ElRow>
             </ElScrollbar>
           </ElCollapseItem>
-          <!-- 吸附于icon块上方的浮层 -->
+          <!-- Floating layer anchored above the icon block -->
           <template v-if="activeNames.includes('5') && selectedIcons.length">
             <div class="icon-selection-float-abs">
               <div class="float-header">
@@ -1081,7 +1081,7 @@ const confirmSelectedIcons = () => {
           :body-style="{ padding: '0px', height: '100%', width: '100%' }"
           style="display: flex; flex-direction: column; height: 100%"
         >
-          <!-- 占位符，在图片未加载成功时显示 -->
+          <!-- Placeholder shown while the image has not loaded successfully -->
           <div
             v-if="imageLoadStates[site.ResponseBodyHash] !== 'loaded'"
             style="
@@ -1098,7 +1098,7 @@ const confirmSelectedIcons = () => {
             <span v-if="site.type == 'http'">No pictures available</span>
             <span v-else>{{ site.service }}</span>
           </div>
-          <!-- 图片元素，先隐藏，加载成功后再显示 -->
+          <!-- Image element, hidden at first and shown once it loads -->
           <img
             v-show="imageLoadStates[site.ResponseBodyHash] === 'loaded'"
             :src="`/images/screenshots/${site.ResponseBodyHash}.png`"
@@ -1108,7 +1108,7 @@ const confirmSelectedIcons = () => {
             @load="handleImageLoad(site.ResponseBodyHash)"
             @error="handleImageError(site.ResponseBodyHash)"
           />
-          <!-- 隐藏的预加载图片，用于在不显示时也能触发加载事件 -->
+          <!-- Hidden preload image so load events still fire while it is not shown -->
           <img
             v-if="imageLoadStates[site.ResponseBodyHash] !== 'loaded'"
             v-show="false"
@@ -1197,9 +1197,9 @@ const confirmSelectedIcons = () => {
 </style>
 <style lang="less" scoped>
 .icon-selection-float-abs {
-  left: 0; // 靠左对齐icon块
-  bottom: 100%; // 下边界紧贴icon块上边界
-  margin-bottom: 4px; // 微小间隔
+  left: 0; // Left-aligned with the icon block
+  bottom: 100%; // Bottom edge sits right above the icon block
+  margin-bottom: 4px; // Small gap
   z-index: 220;
   background: #fff;
   border-radius: 10px;
@@ -1228,7 +1228,7 @@ const confirmSelectedIcons = () => {
   padding: 8px 14px 10px 14px;
   min-width: 120px;
   border: 1px solid #e3e4e6;
-  /* 可根据实际位置微调 */
+  /* Fine-tune this to the actual position */
 }
 .float-header {
   display: flex;
@@ -1268,28 +1268,28 @@ const confirmSelectedIcons = () => {
   margin-left: 10px;
 }
 
-// 优化表格滚动性能
+// Improve table scroll performance
 :deep(.asset-table) {
   .el-table__body-wrapper {
-    // 启用硬件加速
+    // Enable hardware acceleration
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
     will-change: scroll-position;
-    // 优化滚动性能
+    // Improve scroll performance
     -webkit-overflow-scrolling: touch;
     overflow-anchor: none;
 
-    // 防止滚动时重排
+    // Prevent reflow while scrolling
     .el-table__body {
       transform: translateZ(0);
       -webkit-transform: translateZ(0);
     }
   }
 
-  // 优化单元格滚动条性能
+  // Improve cell scrollbar performance
   .el-scrollbar {
     .el-scrollbar__wrap {
-      // 启用硬件加速
+      // Enable hardware acceleration
       transform: translateZ(0);
       -webkit-transform: translateZ(0);
       will-change: scroll-position;
@@ -1297,21 +1297,21 @@ const confirmSelectedIcons = () => {
     }
   }
 
-  // 优化滚动条
+  // Improve scrollbars
   .el-scrollbar__bar {
-    // 启用硬件加速
+    // Enable hardware acceleration
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
   }
 }
 
-// 优化表格单元格内容
+// Improve table cell content
 :deep(.asset-table .el-table__cell) {
-  // 防止内容变化导致重排
+  // Prevent reflow when content changes
   contain: layout style paint;
 
   .scrollbar-demo-item {
-    // 启用硬件加速
+    // Enable hardware acceleration
     transform: translateZ(0);
     -webkit-transform: translateZ(0);
   }

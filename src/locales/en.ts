@@ -4,6 +4,7 @@ export default {
     loading: 'Loading...',
     noMore: 'No more',
     searchIcon: 'Search icons',
+    preview: 'Preview',
     selectCategory: 'Select Category',
     about: 'About',
     unprocessed: 'Unprocessed',
@@ -929,7 +930,11 @@ export default {
     phone: 'Phone number',
     email: 'Email',
     addr: 'Address',
-    form: 'Form'
+    form: 'Form',
+    demoNickName: 'Falling petals.',
+    demoSex: 'Male',
+    demoAddr:
+      'This is a very long address used to demonstrate how the descriptions list wraps long text.'
   },
   dialogDemo: {
     dialog: 'Dialog',
@@ -1000,5 +1005,13 @@ export default {
     seconds: '{n} seconds',
     week: '{name}',
     weekNames: 'Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday'
+  },
+  cropping: {
+    cropping: 'Image Cropping',
+    crop: 'Crop'
+  },
+  videoPlayerDemo: {
+    videoPlayer: 'Video Player',
+    dialogShow: 'Show in dialog'
   }
 }

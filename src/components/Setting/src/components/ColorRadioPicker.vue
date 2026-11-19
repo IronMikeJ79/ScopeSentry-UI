@@ -27,7 +27,7 @@ watch(
   }
 )
 
-// 监听
+// Watch for changes
 watch(
   () => colorVal.value,
   (val: string) => {

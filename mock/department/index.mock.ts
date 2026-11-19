@@ -8,64 +8,64 @@ const citys = ['厦门总公司', '北京分公司', '上海分公司', '福州�
 
 for (let i = 0; i < 5; i++) {
   departmentList.push({
-    // 部门名称
+    // Department name
     departmentName: citys[i],
     id: toAnyString(),
     createTime: faker.date.anytime(),
     status: faker.number.int({ min: 0, max: 1 }),
-    // 备注
+    // Remark
     remark: faker.lorem.sentence(),
     children: [
       {
-        // 部门名称
+        // Department name
         departmentName: '研发部',
         createTime: faker.date.anytime(),
-        // 状态
+        // Status
         status: faker.number.int({ min: 0, max: 1 }),
         id: toAnyString(),
         remark: faker.lorem.sentence()
       },
       {
-        // 部门名称
+        // Department name
         departmentName: '产品部',
         createTime: faker.date.anytime(),
-        // 状态
+        // Status
         status: faker.number.int({ min: 0, max: 1 }),
         id: toAnyString(),
         remark: faker.lorem.sentence()
       },
       {
-        // 部门名称
+        // Department name
         departmentName: '运营部',
         createTime: faker.date.anytime(),
-        // 状态
+        // Status
         status: faker.number.int({ min: 0, max: 1 }),
         id: toAnyString(),
         remark: faker.lorem.sentence()
       },
       {
-        // 部门名称
+        // Department name
         departmentName: '市场部',
         createTime: faker.date.anytime(),
-        // 状态
+        // Status
         status: faker.number.int({ min: 0, max: 1 }),
         id: toAnyString(),
         remark: faker.lorem.sentence()
       },
       {
-        // 部门名称
+        // Department name
         departmentName: '销售部',
         createTime: faker.date.anytime(),
-        // 状态
+        // Status
         status: faker.number.int({ min: 0, max: 1 }),
         id: toAnyString(),
         remark: faker.lorem.sentence()
       },
       {
-        // 部门名称
+        // Department name
         departmentName: '客服部',
         createTime: faker.date.anytime(),
-        // 状态
+        // Status
         status: faker.number.int({ min: 0, max: 1 }),
         id: toAnyString(),
         remark: faker.lorem.sentence()
@@ -75,7 +75,7 @@ for (let i = 0; i < 5; i++) {
 }
 
 export default [
-  // 列表接口
+  // List API
   {
     url: '/mock/department/list',
     method: 'get',
@@ -107,19 +107,19 @@ export default [
     timeout: 1000,
     response: ({ query }) => {
       const { pageSize } = query
-      // 根据pageSize来创建数据
+      // Create data based on pageSize
       const mockList: any = []
       for (let i = 0; i < pageSize; i++) {
         mockList.push({
-          // 用户名
+          // Username
           username: faker.person.firstName(),
-          // 账号
+          // Account
           account: faker.person.lastName(),
-          // 邮箱
+          // Email
           email: faker.internet.email(),
-          // 创建时间
+          // Create time
           createTime: faker.date.anytime(),
-          // 用户id
+          // User ID
           id: toAnyString()
         })
       }
@@ -132,7 +132,7 @@ export default [
       }
     }
   },
-  // 保存接口
+  // Save API
   {
     url: '/mock/department/user/save',
     method: 'post',
@@ -144,7 +144,7 @@ export default [
       }
     }
   },
-  // 删除接口
+  // Delete API
   {
     url: '/mock/department/user/delete',
     method: 'post',
@@ -163,7 +163,7 @@ export default [
       }
     }
   },
-  // 保存接口
+  // Save API
   {
     url: '/mock/department/save',
     method: 'post',
@@ -175,7 +175,7 @@ export default [
       }
     }
   },
-  // 删除接口
+  // Delete API
   {
     url: '/mock/department/delete',
     method: 'post',

@@ -14,8 +14,8 @@ export const useLockStore = defineStore('lock', {
   state: (): LockState => {
     return {
       lockInfo: {
-        // isLock: false, // 是否锁定屏幕
-        // password: '' // 锁屏密码
+        // isLock: false, // Whether the screen is locked
+        // password: '' // Lock screen password
       }
     }
   },

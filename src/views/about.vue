@@ -52,7 +52,7 @@ const qrCodes = ref([
             </a>
           </li>
           <li>
-            Github：
+            Github:
             <a
               href="https://github.com/Autumn-27/ScopeSentry"
               target="_blank"
@@ -82,7 +82,7 @@ const qrCodes = ref([
             </a>
           </li>
           <li>
-            SecureFlow：
+            SecureFlow:
             <a
               href="https://plugin.scope-sentry.top/"
               target="_blank"
@@ -137,7 +137,9 @@ const qrCodes = ref([
               <h4 class="font-bold text-lg text-center">{{ t('aboutPage.cooperation') }}</h4>
             </template>
             <div class="flex flex-col items-center p-4">
-              <p class="text-gray-600 mb-6 text-center break-all">{{ t('aboutPage.cooperationMsg') }}</p>
+              <p class="text-gray-600 mb-6 text-center break-all">{{
+                t('aboutPage.cooperationMsg')
+              }}</p>
               <el-button type="primary" size="large" class="w-full md:w-auto">
                 rainy-autumn@outlook.com
               </el-button>
