@@ -276,7 +276,10 @@ export default {
     login: 'Login',
     pluginsManager: 'Plugins Manager',
     dashboard: 'Dashboard',
-    document: 'Document'
+    document: 'Document',
+    iconPicker: 'Icon Picker',
+    treeTable: 'Tree Table',
+    PicturePreview: 'Picture Preview'
   },
   permission: {
     hasPermission: 'Please set the operation permission value'
@@ -341,6 +344,7 @@ export default {
     url: 'URL',
     msgUrl: 'Get more page entries',
     sensitiveInfoScan: 'SensitiveInfo Scan',
+    pageMonitoring: 'Monitor page changes',
     msgPageMonitoringAll: 'Monitoring all pages',
     msgPageMonitoringJs: 'Monitoring JS pages only',
     msgCrawler:
@@ -534,7 +538,9 @@ export default {
     unknown: 'Unknown',
     nameMsg:
       'Please enter the POC name. The POC name and the name in the POC content should be consistent.',
-    contentMsg: 'Please enter poc content'
+    contentMsg: 'Please enter poc content',
+    edit: 'Edit',
+    delete: 'Delete'
   },
   configuration: {
     subfinder: 'subfinder configuration',
@@ -598,6 +604,10 @@ export default {
     reInstall: 'Reinstall',
     reCheck: 'Recheck',
     uninstall: 'Uninstall',
+    runOnce: 'Run Once',
+    runOnceConfirm: 'Are you sure you want to run this plugin once?',
+    runOnceSuccess: 'Plugin ran successfully',
+    runOnceFailed: 'Failed to run the plugin',
     parameterConfig: 'Parameter Configuration',
     parameterName: 'Parameter Name',
     parameterType: 'Type',
@@ -879,5 +889,41 @@ export default {
     showOrHiddenSortable: 'Show or hidden sortable',
     videoPreview: 'Video preview',
     cardTable: 'Card table'
+  },
+  descriptionsDemo: {
+    descriptions: 'Descriptions',
+    descriptionsDes: 'Secondary encapsulation based on the ElementPlus Descriptions component',
+    username: 'Username',
+    nickName: 'Nickname',
+    phone: 'Phone number',
+    email: 'Email',
+    addr: 'Address',
+    form: 'Form'
+  },
+  dialogDemo: {
+    dialog: 'Dialog',
+    dialogDes: 'Secondary encapsulation based on the ElementPlus Dialog component',
+    open: 'Open',
+    close: 'Close',
+    submit: 'Submit',
+    combineWithForm: 'Use with a form'
+  },
+  exampleDemo: {
+    detail: 'Detail'
+  },
+  imageViewerDemo: {
+    imageViewer: 'Image Viewer',
+    imageViewerDes: 'Image preview component based on viewerjs',
+    open: 'Open'
+  },
+  inputPasswordDemo: {
+    title: 'Password Input',
+    inputPasswordDes: 'Password input component with strength validation'
+  },
+  richText: {
+    richText: 'Rich Text Editor',
+    richTextDes: 'Rich text editor based on wangEditor',
+    jsonEditor: 'JSON Editor',
+    jsonEditorDes: 'Editor component for editing JSON content'
   }
 }

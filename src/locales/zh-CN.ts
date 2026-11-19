@@ -157,9 +157,9 @@ export default {
     project: '根据项目名称检索',
     length: '根据响应长度检索，不支持模糊查找',
     subdomainType: '检索记录类型',
-    subdoaminValue: '检索记录值',
+    subdomainValue: '检索记录值',
     url: '检索URL',
-    inpur: '检索输入源',
+    input: '检索输入源',
     source: '检索URL来源',
     urlType: '检索URL类型',
     method: '检索Method',
@@ -275,7 +275,10 @@ export default {
     login: '登录',
     pluginsManager: '插件管理',
     dashboard: '首页',
-    document: '文档'
+    document: '文档',
+    iconPicker: '图标选择器',
+    treeTable: '树形表格',
+    PicturePreview: '图片预览'
   },
   permission: {
     hasPermission: '请设置操作权限值'
@@ -531,7 +534,9 @@ export default {
     info: '信息',
     unknown: '未知',
     nameMsg: '请输入POC名称,POC名称和POC内容中的name应保持一致。',
-    contentMsg: '请输入poc内容'
+    contentMsg: '请输入poc内容',
+    edit: '编辑',
+    delete: '删除'
   },
   configuration: {
     subfinder: 'subfinder配置',
@@ -872,5 +877,41 @@ export default {
     showOrHiddenSortable: '显示/隐藏排序',
     videoPreview: '视频预览',
     cardTable: '卡片表格'
+  },
+  descriptionsDemo: {
+    descriptions: '描述列表',
+    descriptionsDes: '基于 ElementPlus 的 Descriptions 组件二次封装',
+    username: '用户名',
+    nickName: '昵称',
+    phone: '手机号',
+    email: '邮箱',
+    addr: '地址',
+    form: '表单'
+  },
+  dialogDemo: {
+    dialog: '弹窗',
+    dialogDes: '基于 ElementPlus 的 Dialog 组件二次封装',
+    open: '打开',
+    close: '关闭',
+    submit: '提交',
+    combineWithForm: '结合表单使用'
+  },
+  exampleDemo: {
+    detail: '详情'
+  },
+  imageViewerDemo: {
+    imageViewer: '图片预览',
+    imageViewerDes: '基于 viewerjs 封装的图片预览组件',
+    open: '打开'
+  },
+  inputPasswordDemo: {
+    title: '密码输入框',
+    inputPasswordDes: '带强度校验的密码输入框组件'
+  },
+  richText: {
+    richText: '富文本编辑器',
+    richTextDes: '基于 wangEditor 封装的富文本编辑器',
+    jsonEditor: 'JSON 编辑器',
+    jsonEditorDes: '用于编辑 JSON 内容的编辑器组件'
   }
 }
