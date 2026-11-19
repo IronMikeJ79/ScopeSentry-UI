@@ -15,6 +15,7 @@ import { setIndex } from './helper'
 import type { TableProps, TableColumn, Pagination, TableSetProps } from './types'
 import { set, get } from 'lodash-es'
 import { CSSProperties } from 'vue'
+import { useI18n } from '@/hooks/web/useI18n'
 import { getSlot } from '@/utils/tsxHelper'
 import TableActions from './components/TableActions.vue'
 import { isImgPath } from '@/utils/is'
@@ -210,9 +211,11 @@ export default defineComponent({
   },
   emits: ['update:pageSize', 'update:currentPage', 'register', 'refresh'],
   setup(props, { attrs, emit, slots, expose }) {
+    const { t } = useI18n()
+
     const elTableRef = ref<ComponentRef<typeof ElTable>>()
 
-    // 注册
+    // Register
     onMounted(() => {
       const tableRef = unref(elTableRef)
       emit('register', tableRef?.$parent, elTableRef)
@@ -538,7 +541,7 @@ export default defineComponent({
                 })
               ) : (
                 <div class="flex flex-1 justify-center">
-                  <ElEmpty description="暂无数据" />
+                  <ElEmpty description={t('common.noData')} />
                 </div>
               )}
             </div>
